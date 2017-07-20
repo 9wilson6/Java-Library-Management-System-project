@@ -79,6 +79,7 @@ public class Return extends javax.swing.JFrame {
         jTextField5.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(153, 153, 153), 1, true), "Return Panel", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Agency FB", 0, 36), new java.awt.Color(0, 153, 0))); // NOI18N
 
@@ -219,13 +220,11 @@ public class Return extends javax.swing.JFrame {
                     .addComponent(jLabel14)
                     .addComponent(jLabel13)
                     .addComponent(jLabel8)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel9, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtBookedition, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -314,7 +313,6 @@ public class Return extends javax.swing.JFrame {
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imgs/back.png"))); // NOI18N
         jButton4.setText("Back");
-        jButton4.setActionCommand("Back");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -406,7 +404,7 @@ public class Return extends javax.swing.JFrame {
             rs.close();
             pst.close();
             conn.close();
-        } catch (Exception e) {
+        } catch (SQLException e) {
         }
        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -422,37 +420,40 @@ public class Return extends javax.swing.JFrame {
             
              pst=conn.prepareStatement(sql);
              pst.execute();
+             JOptionPane.showMessageDialog(null, "Successfuly transfered");
+                 rs.close();
+                 pst.close();
              //JOptionPane.showMessageDialog(null, "Book Successfully transfered");
          } catch (SQLException ex) {
               JOptionPane.showMessageDialog(null, ex);
          }
-         try {
-           String sql2="Insert into Return(Studentid,Name,SurName,Course,Branch,Year,Semester,Bookid,BookName,Edition,Publisher,Price,Pages,DOI,DOR)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-           pst=conn.prepareStatement(sql2);
-           
-            pst.setString(1,txtStudId.getText() );
-            pst.setString(2,txtStudname.getText() );
-            pst.setString(3,txtStudsname.getText() );
-            pst.setString(4,txtStudCouus.getText() );
-            pst.setString(5, txtStudBranch.getText());
-            pst.setString(6, txtStudyr.getText());
-            pst.setString(7,txtStudSem.getText() );
-            pst.setString(8, txtBookid.getText());
-            pst.setString(9,txtBookName.getText());
-            pst.setString(10,txtBookedition.getText() );
-            pst.setString(11,txtBookpublisher.getText() );
-            pst.setString(12,txtBookprice.getText() );
-            pst.setString(13,txtBookpages.getText() );
-            pst.setString(14,txtDateOfIssue.getText() );
-            pst.setString(15,((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText() );
-            
-            pst.execute();
-            JOptionPane.showMessageDialog(null, "Successfuly transfered");
-                 rs.close();
-                 pst.close();
-        } catch (HeadlessException | SQLException e) {
-            JOptionPane.showMessageDialog(null, e);
-        }
+//         try {
+//           String sql2="Insert into Return(Studentid,Name,SurName,Course,Branch,Year,Semester,Bookid,BookName,Edition,Publisher,Price,Pages,DOI,DOR)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+//           pst=conn.prepareStatement(sql2);
+//           
+//            pst.setString(1,txtStudId.getText() );
+//            pst.setString(2,txtStudname.getText() );
+//            pst.setString(3,txtStudsname.getText() );
+//            pst.setString(4,txtStudCouus.getText() );
+//            pst.setString(5, txtStudBranch.getText());
+//            pst.setString(6, txtStudyr.getText());
+//            pst.setString(7,txtStudSem.getText() );
+//            pst.setString(8, txtBookid.getText());
+//            pst.setString(9,txtBookName.getText());
+//            pst.setString(10,txtBookedition.getText() );
+//            pst.setString(11,txtBookpublisher.getText() );
+//            pst.setString(12,txtBookprice.getText() );
+//            pst.setString(13,txtBookpages.getText() );
+//            pst.setString(14,txtDateOfIssue.getText() );
+//            pst.setString(15,((JTextField)jDateChooser1.getDateEditor().getUiComponent()).getText() );
+//            
+//            pst.execute();
+//            JOptionPane.showMessageDialog(null, "Successfuly transfered");
+//                 rs.close();
+//                 pst.close();
+//        } catch (HeadlessException | SQLException e) {
+//            JOptionPane.showMessageDialog(null, e);
+//        }
                 try {
                   String sqls ="insert into Books(Bookid,Name,Edition,Publisher,Price,Pages)values(?,?,?,?,?,?) ";
             pst=conn.prepareStatement(sqls);
