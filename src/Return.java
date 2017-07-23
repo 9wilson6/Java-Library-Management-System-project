@@ -420,7 +420,7 @@ public class Return extends javax.swing.JFrame {
             
              pst=conn.prepareStatement(sql);
              pst.execute();
-             JOptionPane.showMessageDialog(null, "Successfuly transfered");
+             //JOptionPane.showMessageDialog(null, "Successfuly transfered");
                  rs.close();
                  pst.close();
              //JOptionPane.showMessageDialog(null, "Book Successfully transfered");
@@ -464,6 +464,7 @@ public class Return extends javax.swing.JFrame {
             pst.setString(5, txtBookprice.getText());
             pst.setString(6, txtBookpages.getText());
             pst.execute();
+             JOptionPane.showMessageDialog(null, "Successfuly transfered");
             //JOptionPane.showMessageDialog(null, "Books table reupdated");  
                      } catch (HeadlessException | SQLException e) {
                          JOptionPane.showMessageDialog(null, e);
