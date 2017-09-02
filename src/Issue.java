@@ -387,9 +387,15 @@ public class Issue extends javax.swing.JFrame {
        Welcome well= new Welcome();
        well.setVisible(true);
         try {
-            conn.close();
-            pst.close();
-            rs.close();
+           if (rs!=null) {
+                rs.close(); 
+            }
+            if (pst!=null) {
+                pst.close();
+            }
+            if (conn!=null) {
+              conn.close();  
+            }
         } catch (SQLException e) {
         }
        

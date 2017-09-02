@@ -391,7 +391,8 @@ public class Return extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null, ex);
              
          }
-        
+
+     
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -401,10 +402,17 @@ public class Return extends javax.swing.JFrame {
 
 
         try {
-            rs.close();
-            pst.close();
-            conn.close();
+            if (rs!=null) {
+                rs.close(); 
+            }
+            if (pst!=null) {
+                pst.close();
+            }
+            if (conn!=null) {
+              conn.close();  
+            }
         } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, e);
         }
        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed

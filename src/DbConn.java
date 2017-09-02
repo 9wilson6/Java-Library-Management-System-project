@@ -21,7 +21,7 @@ public class DbConn {
     public static Connection getCon(){
         try {
            
-            conn=DriverManager.getConnection("jdbc:sqlite:C:\\Users\\Sam\\Documents\\NetBeansProjects\\LibraryMngt\\Lib.sqlite");
+            conn=DriverManager.getConnection("jdbc:sqlite:Lib.sqlite");
             return conn;
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
